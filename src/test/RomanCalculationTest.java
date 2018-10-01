@@ -15,49 +15,42 @@ public class RomanCalculationTest {
 		
        int result = RomanCalculation.getRomanNumberValue('I');
          assertEquals(1, result);
-		//fail("Not yet implemented");
 	}
 	@Test
 	public void testV() {
 		
        int result = RomanCalculation.getRomanNumberValue('V');
          assertEquals(5, result);
-		//fail("Not yet implemented");
 	}
 	@Test
 	public void testX() {
 		
        int result = RomanCalculation.getRomanNumberValue('X');
          assertEquals(10, result);
-		//fail("Not yet implemented");
 	}
 	@Test
 	public void testL() {
 		
        int result = RomanCalculation.getRomanNumberValue('L');
          assertEquals(50, result);
-		//fail("Not yet implemented");
 	}
 	@Test
 	public void testC() {
 		
        int result = RomanCalculation.getRomanNumberValue('C');
          assertEquals(100, result);
-		//fail("Not yet implemented");
 	}
 	@Test
 	public void testD() {
 		
        int result = RomanCalculation.getRomanNumberValue('D');
          assertEquals(500, result);
-		//fail("Not yet implemented");
 	}
 	@Test
 	public void testMPositive() {
 		
        int result = RomanCalculation.getRomanNumberValue('M');
          assertEquals(1000, result);
-		//fail("Not yet implemented");
 	}
 	
 	@Test
@@ -65,7 +58,28 @@ public class RomanCalculationTest {
 		
        int result = RomanCalculation.getRomanNumberValue('m');
          assertNotEquals(1000, result);
-		//fail("Not yet implemented");
 	}
+	
+	@Test
+	public void testromanToDecimal() {
+		float result = RomanCalculation.romanToDecimal("IV");
+		System.out.println(result);
+        assertEquals(4, result,0.0);
+
+	}
+	@Test
+	public void testprocessDecimal() {
+		float result =	RomanCalculation.processDecimal(10,50,100);
+        assertEquals(90.0, result,0.0);
+
+	}
+	@Test
+	public void testprocessDecimalNeeg() {
+		float result =	RomanCalculation.processDecimal(10,50,100);
+        assertEquals(100.0, result,10.0);
+
+	}
+
+	
 
 }

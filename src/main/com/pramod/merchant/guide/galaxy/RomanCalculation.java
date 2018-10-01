@@ -33,41 +33,59 @@ public class RomanCalculation {
 		// TODO Auto-generated method stub
 		//return 0;
 		
-		 float res = 0; 
-		  
-		    // Traverse given input 
-		    for (int i=0; i<string.length(); i++) 
-		    { 
-		        // Getting value of symbol s[i] 
-		        float s1 = getRomanNumberValue(string.charAt(i)); 
-		  
-		        if (i+1 < string.length()) 
-		        { 
-		            // Getting value of symbol s[i+1] 
-			        float s2 = getRomanNumberValue(string.charAt(i+1)); 
+		int decimal = 0;
+        int lastNumber = 0;
+        String romanNumeral = string.toUpperCase();
+        /* operation to be performed on upper cases even if user 
+           enters roman values in lower case chars */
+        for (int x = romanNumeral.length() - 1; x >= 0 ; x--) {
+            char convertToDecimal = romanNumeral.charAt(x);
 
-		            // Comparing both values 
-		            if (s1 >= s2) 
-		            { 
-		                // Value of current symbol is greater 
-		                // or equal to the next symbol 
-		                res = res + s1; 
-		            } 
-		            else
-		            { 
-		                res = res + s2 - s1; 
-		                i++; // Value of current symbol is 
-		                     // less than the next symbol 
-		            } 
-		        } 
-		        else
-		        { 
-		            res = res + s1; 
-		            i++; 
-		        } 
-		    } 
-		    return res; 
+            switch (convertToDecimal) {
+                case 'M':
+                    decimal = processDecimal(1000, lastNumber, decimal);
+                    lastNumber = 1000;
+                    break;
+
+                case 'D':
+                    decimal = processDecimal(500, lastNumber, decimal);
+                    lastNumber = 500;
+                    break;
+
+                case 'C':
+                    decimal = processDecimal(100, lastNumber, decimal);
+                    lastNumber = 100;
+                    break;
+
+                case 'L':
+                    decimal = processDecimal(50, lastNumber, decimal);
+                    lastNumber = 50;
+                    break;
+
+                case 'X':
+                    decimal = processDecimal(10, lastNumber, decimal);
+                    lastNumber = 10;
+                    break;
+
+                case 'V':
+                    decimal = processDecimal(5, lastNumber, decimal);
+                    lastNumber = 5;
+                    break;
+
+                case 'I':
+                    decimal = processDecimal(1, lastNumber, decimal);
+                    lastNumber = 1;
+                    break;
+            }
+        }return decimal;
 	}
 	
-
+	
+	 public static int processDecimal(int decimal, int lastNumber, int lastDecimal) {
+	        if (lastNumber > decimal) {
+	            return lastDecimal - decimal;
+	        } else {
+	            return lastDecimal + decimal;
+	        }
+	    }
 }

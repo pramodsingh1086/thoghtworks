@@ -1,35 +1,47 @@
-//package test;\
-//
-//import static org.junit.Assert.*;
-//
-//import org.junit.After;
-//import org.junit.AfterClass;
-//import org.junit.Before;
-//import org.junit.BeforeClass;
-//import org.junit.Test;
-//
-//import main.com.pramod.merchant.guide.galaxy.RomanNumbers;
-//
-//public class RomanNumbersTest {
-//	
-//	private RomanNumbers romanNumbers;
-//
-//	
-//	@Before
-//	public void setUp() throws Exception {
-//		romanNumbers = new RomanNumbers();
-//
-//	}
-//
-//	@After
-//	public void tearDown() throws Exception {
-//		romanNumbers = null;
-//	}
-//
-//	@Test
-//	public void test() {
-//       int  result = romanNumbers.
-//		fail("Not yet implemented");
-//	}
-//
-//}
+package test;
+
+import static org.junit.Assert.*;
+
+
+import org.junit.Test;
+
+import main.com.pramod.merchant.guide.galaxy.RomanNumbers;
+
+public class RomanNumbersTest {
+	
+
+	
+	
+
+	@Test
+	public void testI() {
+		int result = RomanNumbers.I.getRomanNumberValue();
+		assertEquals(result,1);
+
+	}
+	@Test
+	public void testV() {
+		int result = RomanNumbers.V.getRomanNumberValue();
+		assertEquals(result,5);
+
+	}
+	@Test
+	public void testX() {
+		int result = RomanNumbers.X.getRomanNumberValue();
+		assertEquals(result,10);
+
+	}
+	@Test
+	public void testC() {
+		int result = RomanNumbers.C.getRomanNumberValue();
+		assertEquals(result,100);
+
+	}
+	@Test
+	public void testM() {
+		int result = RomanNumbers.C.getRomanNumberValue();
+		assertNotEquals(result,10);
+
+	}
+
+}

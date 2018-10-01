@@ -1,122 +1,11 @@
 package main.com.pramod.merchant.guide.galaxy;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class IntergalacticRomanConversion {
 	
-	private static Map<String, Integer> decimalValue = new HashMap<String,Integer>();
 	    public static final String NO_IDEA = "I have no idea what you are talking about";
 
-
-//	public static Map<String, Integer> processInput(Map<String, String> inputreturned) {
-//		
-//		// TODO Auto-generated method stub
-//		
-//		//InputDataHandler.		
-//		for(Map.Entry<String, String> data : inputreturned.entrySet()) {
-//			
-//			String key = data.getKey();
-//			String romanValue = data.getValue();
-//			
-//			boolean valueValidator = validateValue(romanValue);
-//			if(valueValidator) {
-//				char convertedRoman = romanValue.charAt(0);
-//				decimalValue.put(key, RomanCalculation.getRomanNumberValue(convertedRoman));
-//
-//			}else if(romanValue.contains("Credits")){
-//				
-//				String [] values = romanValue.split("Credits");
-//				String ch = values[0];
-//				
-//				String valueToBeParsed = ch.replaceAll("\\s+","");
-//
-//				
-//				int decialValueOfText = Integer.parseInt(valueToBeParsed);
-//
-//				
-//				//char convertedRomanValues = values.get
-//				 String[] keyData = key.split(" ");
-//				 
-//				 
-//				 for(String getKeyFromMap :keyData) {
-//					 
-//					 if(decimalValue.containsKey(getKeyFromMap)) {
-//						 
-//						Integer value =  decimalValue.get(getKeyFromMap);
-//						decialValueOfText = decialValueOfText - value;
-//						
-//						 
-//					 }else {
-//						 
-//							decimalValue.put(getKeyFromMap, decialValueOfText);
-//
-//						 
-//					 }
-//					 
-//				 }
-//
-//				
-//
-//			}else {
-//				validateOutput(key,romanValue);
-//			}
-//
-//		}
-//		
-//
-//		return decimalValue;
-//	}
-
-//	private static void validateOutput(String key, String romanValue) {
-//		StringBuilder keyOutput = new StringBuilder();
-//		int result = 0;
-//        
-//       String str = romanValue.replaceAll("[?]*", "");
-//
-//		
-//		if(romanValue!=NO_IDEA) {
-//			String [] outputToBeDisplayed =  str.split(" ");
-//			
-//			
-//			for(int i=0;i<outputToBeDisplayed.length;i++) {
-//				 keyOutput.append(outputToBeDisplayed[i]);
-//				 keyOutput.append(" ");
-//
-//
-//				 if(decimalValue.containsKey(outputToBeDisplayed[0])) {
-//					 if(i+1<outputToBeDisplayed.length) {
-//						 Integer value =  decimalValue.get(outputToBeDisplayed[i]);
-//						 Integer value1 =  decimalValue.get(outputToBeDisplayed[i+1]);
-//						 if(value>=value1) {
-//							 result = result +value;
-//						 }else {
-//							 result = result +value1 -value;
-//							 i++;
-//						 }
-//						 
-//					 }else
-//				        { 
-//						 result = result + decimalValue.get(outputToBeDisplayed[i]); 
-//				            i++; 
-//				        } 
-//
-//				 }
-//				 
-//			 }
-//
-//			 keyOutput.append("is");
-//			 keyOutput.append(" ");
-//			 keyOutput.append(result);
-//			System.out.println(keyOutput);
-//
-//		}else {
-//			System.out.println(NO_IDEA);
-//		}
-//		
-//
-//		
-//	}
 
 	public static boolean validateValue(String romanValue) {
 		// TODO Auto-generated method stub
@@ -161,6 +50,7 @@ public class IntergalacticRomanConversion {
 		for (int i = 0; i < array.length; i++) {
 			if(array[i].toLowerCase().equals("credits")){
 				creditValue = Integer.parseInt(array[i-1]);
+				
 			}
 			if(array[i].toLowerCase().equals("is")){
 				splitIndex = i-1;
@@ -173,7 +63,7 @@ public class IntergalacticRomanConversion {
 		for (int j = 0; j < valueofElement.length; j++) {
 			stringBuilder.append(InputDataHandler.tokenRomanValueMapping.get(valueofElement[j]));
 		}
-		float valueOfElementInDecimal = new RomanCalculation().romanToDecimal(stringBuilder.toString());
+		float valueOfElementInDecimal =  RomanCalculation.romanToDecimal(stringBuilder.toString());
 		InputDataHandler.elementValueList.put(element, creditValue/valueOfElementInDecimal);
 		
 	}

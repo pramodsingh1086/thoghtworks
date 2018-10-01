@@ -7,17 +7,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 public class InputDataHandler {
 
 	private static Map<String,String> romanNumberMappng = new LinkedHashMap<String,String>();
 	
 	public static final String NO_IDEA = "I have no idea what you are talking about";
-	//MultiValueMap map = new MultiValueMap();
 	public static Map<String, String> tokenRomanValueMapping = new HashMap<String, String>();
 	public static Map<String, Float> tokenIntegerValue = new HashMap<String, Float>(); //{pish=10.0, tegj=50.0, prok=5.0, glob=1.0}
 	public static Map<String, String> questionAndReply = new HashMap<String, String>();  //{how much is pish tegj glob glob ?, how many Credits is glob prok Iron ?}
@@ -49,8 +46,6 @@ public class InputDataHandler {
 	}
 
 	private static void processInputData(String line) {
-		// String[] romanData = line.split(" ");
-		
 		String arr[] = line.split("((?<=:)|(?=:))|( )");
 
 		if (line.endsWith("?")){

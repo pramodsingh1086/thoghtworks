@@ -19,9 +19,6 @@ public class OutPutHandler {
 	}
 
 	private static void processReply(String key) {
-		// TODO Auto-generated method stub
-		
-
 			if (key.toLowerCase().startsWith("how much")){
 				findValueOfRoman(key);
 			}
@@ -34,6 +31,11 @@ public class OutPutHandler {
 
 	private static void findValueOfElement(String key) {
 		// TODO Auto-generated method stub
+		StringBuilder outPutDataPrint = new StringBuilder();
+		String keyData = null;
+		float outPutData = 0;
+
+
 		if (isValidinput(key)== true){
 			ArrayList<String> tokenValueToRoman = new ArrayList<String>();
 			ArrayList<String> tokenValue = splitQuery(key);
@@ -43,17 +45,36 @@ public class OutPutHandler {
 					String value = InputDataHandler.tokenRomanValueMapping.get(tokenValue.get(i));
 					if(IntergalacticRomanConversion.validateValue(value)) {
 						tokenValueToRoman.add(InputDataHandler.tokenRomanValueMapping.get(tokenValue.get(i)));
+						outPutDataPrint.append(tokenValue.get(i));
+						outPutDataPrint.append(" ");
+
 
 					}
 
+				}else {
+					keyData = tokenValue.get(i);
 				}
 			}
-			float value = new RomanCalculation().romanToDecimal(tokenValueToRoman.toString());
-			tokenValue.add("is");tokenValue.add(Float.toString(value));
-			System.out.println(outputFormatter(tokenValue));
+			if(tokenValueToRoman.size() > 0) {
+				float value =  RomanCalculation.romanToDecimal(tokenValueToRoman.toString());
+				float valuesToBeReturned = InputDataHandler.elementValueList.get(keyData);
+				if(valuesToBeReturned >0 ) {
+					outPutData = valuesToBeReturned * value;
+				}
+				outPutDataPrint.append(" ");
+				outPutDataPrint.append("is");
+				outPutDataPrint.append(" ");
+				outPutDataPrint.append(Float.toString(outPutData));
+				System.out.println(outPutDataPrint);
+
+			}else {
+				System.out.println("I have no idea what you are talking about");
+
+			}
+			
 		}
 		else{
-			System.err.println("I have no idea what you are talking about");
+			System.out.println("I have no idea what you are talking about");
 		}
 	}
 
@@ -90,6 +111,8 @@ public class OutPutHandler {
 		else{
 			return true;
 		}	}
+	
+	
 
 	private static void findValueOfRoman(String key) {
 		// TODO Auto-generated method stub
@@ -106,12 +129,18 @@ public class OutPutHandler {
 
 				}
 			}
-			float value = new RomanCalculation().romanToDecimal(tokenValueToRoman.toString());
-			tokenValue.add("is");tokenValue.add(Float.toString(value));
-			System.out.println(outputFormatter(tokenValue));
+			
+			if(tokenValueToRoman.size() > 0) {
+				float value = RomanCalculation.romanToDecimal(tokenValueToRoman.toString());
+				tokenValue.add("is");tokenValue.add(Float.toString(value));
+				System.out.println(outputFormatter(tokenValue));
+			}else{
+				System.out.println("I have no idea what you are talking about");
+			}
+			
 		}
 		else{
-			System.err.println("I have no idea what you are talking about");
+			System.out.println("I have no idea what you are talking about");
 		}
 	}
 
